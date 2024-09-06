@@ -34,7 +34,24 @@ to activate the environment when you work on the homework.
 conda activate cs182_hw1
 ```
 
-### [Option 2] Working on a Virtual Machine
+### [Option 2] Working through Docker
+We've designed a Docker container that has all requisite packages installed + should work for Windows and Mac.
+
+To use this approach, install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your OS. After launching, either create an account or log in with your Github account. Then, go on the left sidebar and click on Images > Hub > Search > `verityw/datac182`. After downloading the `hw1` image (which may take some time, on account of the file being ~10 GB), you should be able to start up a container by opening a terminal in Docker Desktop (bottom right corner) and running:
+```bash
+docker run -it -p 8888:8888 -v /PATH/TO/HW/REPO:/contained verityw/datac182:hw1 bash
+```
+This will also connect port 8888 on your host machine to 8888 in the container (you can change either of these if needed). Additionally, it mounts your homework repo to a directory inside the container called /contained (any files in your homework repo will be accessible both inside and outside the container). **These are the only persistent files: make sure anything you want to save goes in that mounted directory, since all other files will be deleted when you stop the Docker container!**
+
+This allows you to enter the Docker container through an interactive terminal, which you can use as a normal terminal. You can use this to run e.g., the data download script (if you get a permission denied error, run `chmod u+r+x get_datasets.sh` before running the script again). Likewise, you should be able to compile the Cython stuff (if it says that it's trying to call gcc but can't find it, just run apt-get update and apt-get gcc . If it says something about assigning double to int, check the HW1 announcement thread for a fix / re-pull the repo).
+
+Finally, after entering your homework repo in the container run:
+```bash
+jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+```
+This will start the Jupyter server, which you'll be able to use on your local machine by going to `localhost:8888` in your browser. You'll be able to run the notebooks for the homework this way!
+
+### [Option 3] [WIP] Working on a Virtual Machine
 This assignment is provided pre-setup with a VirtualBox image. Installation Instructions:
 1. Follow [the instructions here](https://www.virtualbox.org/manual/ch02.html) to install VirtualBox if it is not already installed.
 2. [Download the VirtualBox image here](https://drive.google.com/file/d/1J1oRKQtIa5gMUxpzOrdLL6taQtGA4a3k/view?usp=sharing)
