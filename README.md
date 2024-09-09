@@ -41,7 +41,9 @@ To use this approach, install [Docker Desktop](https://www.docker.com/products/d
 ```bash
 docker run -it -p 8888:8888 -v /PATH/TO/HW/REPO:/contained verityw/datac182:hw1 bash
 ```
-This will also connect port 8888 on your host machine to 8888 in the container (you can change either of these if needed). Additionally, it mounts your homework repo to a directory inside the container called /contained (any files in your homework repo will be accessible both inside and outside the container). **These are the only persistent files: make sure anything you want to save goes in that mounted directory, since all other files will be deleted when you stop the Docker container!**
+**Please make sure to replace `/PATH/TO/HW/REPO` in the above command with the actual path to the homework repo on your local machine!!!** If you get some sort of permission error, you'll need to [enable file-sharing for mounting directories in Docker Desktop](https://forums.docker.com/t/automatically-permit-sharing-for-mounts/141124/3).
+
+This will also connect port 8888 on your host machine to 8888 in the container (you can change either of these if needed). Additionally, it mounts your homework repo to a directory inside the container called `/contained` (any files in your homework repo will be accessible both inside and outside the container). **These are the only persistent files: make sure anything you want to save goes in that mounted directory, since all other files will be deleted when you stop the Docker container!** 
 
 This allows you to enter the Docker container through an interactive terminal, which you can use as a normal terminal. You can use this to run e.g., the data download script (if you get a permission denied error, run `chmod u+r+x get_datasets.sh` before running the script again). Likewise, you should be able to compile the Cython stuff (if it says that it's trying to call gcc but can't find it, just run apt-get update and apt-get gcc . If it says something about assigning double to int, check the HW1 announcement thread for a fix / re-pull the repo).
 
