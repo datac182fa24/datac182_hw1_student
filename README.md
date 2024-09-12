@@ -133,6 +133,22 @@ notebook and place it in the assignment directory before submitting. Also rememb
 to download required output file and place it into submission_logs/ directory.
 
 ### FAQ
+
+**I'm getting some weird issue about Cython assigning float to int** 
+
+This is because Cython (which compiles Python to C) thinks that the code you provided is in Python 3 instead of Python 2. This is a problem because Python 2 converts int / int to int, while Python 3 makes it a float. By default, it should set to Python 2 (even if the actual Python version you're using is 3) -- I'm not sure why it isn't doing that for you. You can force it to use Python 2 by going into deeplearning/setup.py and looking for the part:
+
+```python
+setup(
+    ext_modules=cythonize(extensions),
+)
+```
+This is what compiles im2col_cython.pyx into C. You can add `compiler_directives={'language_level' : "2"}` inside the `cythonize()` to force it to use Python 2, see [here](https://stackoverflow.com/questions/34603628/how-to-specify-python-3-source-in-cythons-setup-py).
+
+**Cython gives an about a file called longintrepr.h not being found** 
+
+Please lower your Python version to < 3.11 (we suggest 3.8 or 3.9). This should not be an issue for anyone using our Conda yaml file (or the Docker), since it sets the Python version to one of those versions.
+
 **I get an error "AMD-V is disabled in the BIOS" or "Intel-VT is disabled in the BIOS" or similar**
 
 Solution: See [this link](https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/sect-Virtualization-Troubleshooting-Enabling_Intel_VT_and_AMD_V_virtualization_hardware_extensions_in_BIOS.html)
