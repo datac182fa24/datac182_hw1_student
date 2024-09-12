@@ -15,7 +15,7 @@ are as follows:
   and gain practical experience using it to train models.
 
 ## Setup
-Make sure your machine is set up with the assignment dependencies.
+Make sure your machine is set up with the assignment dependencies. If you're unfamiliar with Docker or any other part of the setup process, **we highly recommend reading the [setup document](dockersetup.md)**, which gives a high-level description of what the commands below (and their parameters) are doing.
 
 ### [Option 1] Install Anaconda and Required Packages
 The preferred approach for installing all the assignment dependencies is to use
