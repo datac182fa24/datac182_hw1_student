@@ -61,29 +61,19 @@ This assignment is provided pre-setup with a VirtualBox image. Installation Inst
 4. Start the VM. The username and password are both cs182. Required packages are pre-installed and the cs182_hw1 environment activated by default.
 5. Download the assignment code onto the VM yourself.
 
-#### FAQ
-**I get an error "AMD-V is disabled in the BIOS" or "Intel-VT is disabled in the BIOS" or similar**
-
-Solution: See [this link](https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/sect-Virtualization-Troubleshooting-Enabling_Intel_VT_and_AMD_V_virtualization_hardware_extensions_in_BIOS.html)
-
-
-**The virtual machine won't boot**
-
-Solutions:
-
-- Try increasing the number of allocated CPUs: Under Settings→System→Processor
-- Try [increasing the amount of allocated memory:](https://superuser.com/questions/926339/how-to-change-the-ram-allocated-to-an-os-in-virtualbox)
-
-**Download data:**
+### Download Data
 Once you have the starter code, you will need to download the CIFAR-10 dataset.
-Run the following from the `assignment1` directory:
+Run the following from this repo:
 
 ```bash
 cd deeplearning/datasets
 ./get_datasets.sh
 ```
 
-**Compile the Cython extension:** Convolutional Neural Networks require a very
+If running on Windows (where you can't run bash scripts), please run the above inside the Docker interactive terminal.
+
+### Compile the Cython extension
+Convolutional Neural Networks require a very
 efficient implementation. We have implemented of the functionality using
 [Cython](http://cython.org/); you will need to compile the Cython extension
 before you can run the code. From the `deeplearning` directory, run the following
@@ -142,4 +132,16 @@ you use Google Colab (https://colab.research.google.com/). If you use Colab for 
 notebook and place it in the assignment directory before submitting. Also remember
 to download required output file and place it into submission_logs/ directory.
 
+### FAQ
+**I get an error "AMD-V is disabled in the BIOS" or "Intel-VT is disabled in the BIOS" or similar**
+
+Solution: See [this link](https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/sect-Virtualization-Troubleshooting-Enabling_Intel_VT_and_AMD_V_virtualization_hardware_extensions_in_BIOS.html)
+
+
+**The virtual machine won't boot**
+
+Solutions:
+
+- Try increasing the number of allocated CPUs: Under Settings→System→Processor
+- Try [increasing the amount of allocated memory:](https://superuser.com/questions/926339/how-to-change-the-ram-allocated-to-an-os-in-virtualbox)
 
