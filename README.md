@@ -15,6 +15,15 @@ are as follows:
   and gain practical experience using it to train models.
 
 ## Setup
+
+### UPDATED SETUP INSTRUCTIONS
+
+2024-09-20: Due to multiple difficulties with local setups, it's now highly recommended to do HW01 on Google Colab instead, where setup is much easier. [Instructions for setup in this Ed post](https://edstem.org/us/courses/64085/discussion/5293723).
+
+But, if you'd like to do it locally on your own machine, here are the steps.
+
+### Old setup continues below
+
 Make sure your machine is set up with the assignment dependencies. If you're unfamiliar with Docker or any other part of the setup process, **we highly recommend reading the [setup document](dockersetup.md)**, which gives a high-level description of what the commands below (and their parameters) are doing.
 
 ### [Option 1] Install Anaconda and Required Packages
